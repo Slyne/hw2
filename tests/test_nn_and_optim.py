@@ -339,7 +339,7 @@ def train_epoch_1(hidden_dim, batch_size, optimizer, **kwargs):
 
     model = MLPResNet(784, hidden_dim)
     opt = optimizer(model.parameters(), **kwargs)
-    model.eval()
+    model.train()
     return np.array(epoch(train_dataloader, model, opt))
 
 def eval_epoch_1(hidden_dim, batch_size):
@@ -353,7 +353,7 @@ def eval_epoch_1(hidden_dim, batch_size):
              shuffle=False)
 
     model = MLPResNet(784, hidden_dim)
-    model.train()
+    model.eval()
     return np.array(epoch(test_dataloader, model))
 
 def train_mnist_1(batch_size, epochs, optimizer, lr, weight_decay, hidden_dim):
